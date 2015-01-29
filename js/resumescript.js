@@ -10,21 +10,23 @@ var footer = document.querySelector('footer');
 
 //resume section//
 
-var resumesec = document.querySelector('.resume-section');
-var button = document.querySelector('.collapse');
-var isVisible = true;
-	button.addEventListener('click',function (){
-		if (isVisible === true) {
-			resumesec.classList.add('hidden'); 
-			button.textContent='Expand';
-			isVisible = false;
-		}
-		else if (isVisible === false){
-			resumesec.classList.remove('hidden');
-			button.textContent='Collapse';
-			isVisible=true;
-		}
-	})
+var resumesecArr = document.querySelectorAll('.resume-section');
+var buttonArr = document.querySelectorAll('.collapse');
+
+for (var i=0; i<buttonArr.length; i+=1){
+	(function(n){
+		buttonArr[n].addEventListener('click',function (){
+			if (buttonArr[n].textContent==='Collapse'){
+				resumesecArr[n].classList.add('hidden');
+				buttonArr[n].textContent='Expand';
+			}
+			else {
+				resumesecArr[n].classList.remove('hidden');
+				buttonArr[n].textContent='Collapse';
+			}
+		})
+	})(i);
+};
 
 
 
