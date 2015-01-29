@@ -9,7 +9,7 @@ var footer = document.querySelector('footer');
 	document.body.appendChild(footer);
 
 //resume section//
-
+/*
 var resumesec = document.querySelector('.resume-section');
 var button = document.querySelector('.collapse');
 var isVisible = true;
@@ -25,6 +25,31 @@ var isVisible = true;
 			isVisible=true;
 		}
 	})
+*/
+// Get the set of the related collapsible content.
+var resumesecArr = document.querySelectorAll('.resume-section');
+// Get the set of the collapsed buttons.
+var buttonArr = document.querySelectorAll('.collapse');
 
+// Add events to each collapsed button.
+for (var i = 0; i < buttonArr.length ; i += 1){
+	// because of the variable hosting, here should have a self function to hold the variable.
+	(function(n){
+
+		buttonArr[n].addEventListener('click',function (){
+
+			if (buttonArr[n].textContent === 'Collapse') {
+
+				resumesecArr[n].classList.add('hidden'); 
+				buttonArr[n].textContent='Expand';
+			}
+			else{
+
+				resumesecArr[n].classList.remove('hidden');
+				buttonArr[n].textContent='Collapse';
+			}
+		})
+	})(i);
+};
 
 
